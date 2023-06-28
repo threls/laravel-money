@@ -4,6 +4,7 @@ namespace Threls\LaravelMoney\Casts;
 
 use Brick\Math\BigDecimal;
 use Brick\Math\BigNumber;
+use Brick\Math\RoundingMode;
 use Brick\Money\Currency as BrickCurrency;
 use Brick\Money\Money as BrickMoney;
 use Exception;
@@ -138,17 +139,17 @@ class Money implements Castable, MoneyContract
     /**
      * @throws \Brick\Money\Exception\UnknownCurrencyException
      */
-    public function multipliedBy(BigNumber|int|float|string $multiplier): self
+    public function multipliedBy(BigNumber|int|float|string $multiplier, int $roundingMode = RoundingMode::UNNECESSARY): self
     {
-        return self::ofBrick($this->money->multipliedBy($multiplier));
+        return self::ofBrick($this->money->multipliedBy($multiplier, $roundingMode));
     }
 
     /**
      * @throws \Brick\Money\Exception\UnknownCurrencyException
      */
-    public function dividedBy(BigNumber|int|float|string $multiplier): self
+    public function dividedBy(BigNumber|int|float|string $multiplier, int $roundingMode = RoundingMode::UNNECESSARY): self
     {
-        return self::ofBrick($this->money->dividedBy($multiplier));
+        return self::ofBrick($this->money->dividedBy($multiplier, $roundingMode));
     }
 
     /**
