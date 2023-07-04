@@ -14,6 +14,6 @@ class LaravelMoneyServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package->name('laravel-money');
+        $package->name('laravel-money')->hasConfigFile('money');
     }
 }
